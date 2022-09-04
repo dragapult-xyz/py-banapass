@@ -1,2 +1,6 @@
+# Configuration File
 config.py
+
+# Temporary Files
 *__pycache__
+*.log
