@@ -15,6 +15,9 @@ import nfc
 # Math Library
 import numpy
 
+# Maximum seed size
+ID_MAX = 4294967296
+
 # get_chip_id(seed): string
 # Given a seed, generates a random
 # chip ID using the given seed.
@@ -46,13 +49,24 @@ def connect(tag):
     log.write_log("Card tapped. Processing ...", "info")
 
     try:
-
         # Get the id for the tag from the reader
         id = int.from_bytes(tag.identifier, config.ENDIANNESS)
 
+        print("card id (int):", id)
+
+        # ID Exceeds max size
+        if id > ID_MAX:
+
+            print("int exceeds maximum size:", ID_MAX)
+
+            # Ensure it is lower
+            id = id % ID_MAX
+
+            print("new int:", id)
+
         # Generate the chip id for the given seed
         chip_id = get_chip_id(id)
-
+        
         # Generate the access code for the given seed
         access_code = get_access_code(id)
 
