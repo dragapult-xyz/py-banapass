@@ -1,6 +1,9 @@
 # Configuration File
 config.py
 
+# Card File (Sample)
+card*.txt
+
 # Temporary Files
 *__pycache__
 *.log
