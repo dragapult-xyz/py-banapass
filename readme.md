@@ -28,7 +28,7 @@ This software has been tested using a [Sony RC-S380 PaSoRi](https://www.amazon.c
 
 - [Python 3.x](https://www.python.org/downloads/)
 - NFC Card Reader [compatible with the nfcpy library](https://nfcpy.readthedocs.io/en/latest/overview.html)
-- Custom Banapassport DLL file `bngrw.dll` (TODO: ADD TO REPOSITORY)
+- Custom Banapassport DLL file `bngrw.dll` (release preferred), contained in the `bngrw` folder in this repository
 
 ## Setup
 
@@ -36,6 +36,8 @@ This software has been tested using a [Sony RC-S380 PaSoRi](https://www.amazon.c
 2. Install the required Python modules by running `pip install -r requirements.txt` in the directory.
 3. Follow the [nfcpy setup tutorial](https://nfcpy.readthedocs.io/en/latest/topics/get-started.html).
 4. Replace the original `bngrw.dll` file in the game directory with the custom file provided.
+   - Use the version in the `release` folder unless you experience issues, in which case the `debug` version may be used
+   - The debug version may have different behavior, and may require additional libraries.
 
 ## Usage
 
