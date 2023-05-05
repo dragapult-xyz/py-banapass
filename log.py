@@ -1,9 +1,6 @@
 # Operating System Library
 import os
 
-# Configuration File
-import config
-
 from termcolor import colored
 
 # Python date & time library
@@ -11,43 +8,45 @@ from datetime import datetime
 
 # Log Type Enum
 log_type = {
-  "warning": "yellow",
-  "success": "green",
-  "general": "grey",
-  "request": "cyan", 
-  "error": "red",
-  "info": "blue"
+    "warning": "yellow",
+    "success": "green",
+    "general": "grey",
+    "request": "cyan",
+    "error": "red",
+    "info": "blue"
 }
 
 # Application log writer
-def write_log(message, type = "general"):
 
-  # Adds the timestamp to the message
-  def timestamp_message(message):
 
-    # Get the timestamp string
-    timestamp = str(datetime.now())
+def write_log(message, type="general", logfile=None):
 
-    # Add the timestamp to the message and return it
-    return "[" + timestamp + "] " + message
+    # Adds the timestamp to the message
+    def timestamp_message(message):
 
-  # If a log file is defined
-  if config.LOG_FILE:
+        # Get the timestamp string
+        timestamp = str(datetime.now())
 
-    # If the log file does not exist
-    if not os.path.exists(config.LOG_FILE):
+        # Add the timestamp to the message and return it
+        return "[" + timestamp + "] " + message
 
-      # Create the log file
-      with open(config.LOG_FILE, 'w') as f:
+    # If a log file is defined
+    if logfile:
 
-        # Write the creation message to the log file
-        f.write(timestamp_message("Log file created.\n"))
+        # If the log file does not exist
+        if not os.path.exists(logfile):
 
-    # Open the log file with 'append'
-    with open(config.LOG_FILE, 'a') as f:
+            # Create the log file
+            with open(logfile, 'w') as f:
 
-      # Write the message to the log file
-      f.write(timestamp_message(message + "\n"))
+                # Write the creation message to the log file
+                f.write(timestamp_message("Log file created.\n"))
 
-  # Write the coloured timestamped message to the terminal
-  print(colored(timestamp_message(message), log_type[type]))
+        # Open the log file with 'append'
+        with open(logfile, 'a') as f:
+
+            # Write the message to the log file
+            f.write(timestamp_message(message + "\n"))
+
+    # Write the coloured timestamped message to the terminal
+    print(colored(timestamp_message(message), log_type[type]))

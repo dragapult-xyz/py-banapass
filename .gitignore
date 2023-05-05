@@ -7,3 +7,4 @@ card*.txt
 # Temporary Files
 *__pycache__
 *.log
+.vscode/settings.json
