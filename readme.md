@@ -28,15 +28,15 @@ This software has been tested using a [Sony RC-S380 PaSoRi](https://www.amazon.c
 
 - [Python 3.x](https://www.python.org/downloads/)
 - NFC Card Reader [compatible with the nfcpy library](https://nfcpy.readthedocs.io/en/latest/overview.html)
-- Custom Banapassport DLL file `bngrw.dll` (release preferred), contained in the `bngrw` folder in this repository
+- [open-banapass](https://github.com/dragapult-xyz/open-banapass/releases/latest) `release` build, or `debug` if you experience issues
 
 ## Setup
 
 1. Clone the repository to a local folder `git clone https://github.com/dragapult-xyz/py-banapass`.
 2. Install the required Python modules by running `pip install -r requirements.txt` in the directory.
 3. Follow the [nfcpy setup tutorial](https://nfcpy.readthedocs.io/en/latest/topics/get-started.html).
-4. Replace the original `bngrw.dll` file in the game directory with the custom file provided.
-   - Use the version in the `release` folder unless you experience issues, in which case the `debug` version may be used
+4. Back up the original `bngrw.dll` file in the game directory and replace it with the `bngrw.dll` file contained within the downloaded `open-banapass` build.
+   - Use the version in the `release` archive unless you experience issues, in which case the `debug` version may be used
    - The debug version may have different behavior, and may require additional libraries.
 
 ## Usage
@@ -62,3 +62,46 @@ options:
                         Log file which should be written to (Default: None)
   --verbose, -v         Verbose / debug logging will be used. (Default: False)
 ```
+
+## Changelog
+
+### Ver. 1.0.0
+
+Repository changed to public, added link to open-banapass repository,
+updated readme, removed precompiled files from repository
+
+### Ver. 0.7.1
+
+Added bngrw debug/release files, added notes to readme
+
+### Ver. 0.7.0
+
+Renamed to banapass.py, added arguments
+
+### Ver. 0.6.0
+
+Merged upstream changes
+
+### Ver. 0.5.0
+
+Re-added example config
+
+### Ver. 0.4.0
+
+Added readme.md
+
+### Ver. 0.3.0
+
+Cleaned up card reader code
+
+### Ver. 0.2.0
+
+Rewrote example config file
+
+### Ver. 0.1.1
+
+Removed gitignored files, cleaned up gitignore
+
+### Ver. 0.1.0
+
+Initial version, working card reader interface
