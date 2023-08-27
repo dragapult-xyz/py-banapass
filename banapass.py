@@ -189,8 +189,10 @@ if __name__ == '__main__':
         log.write_log(
             "Please wait for the process to be ready ...", "warning", logfile)
 
-        # If a USB connection is opened successfully
-        if clf.open('usb'):
+        # If a USB or COM connection is opened successfully
+        if clf.open('usb') | clf.open('com'):
+            log.write_log(
+            f"Find device: {str(clf.device)}", "success", logfile)
 
             # Infinite loop
             while True:
@@ -208,8 +210,9 @@ if __name__ == '__main__':
 
                 log.write_log("Resuming wait loop", "info", logfile)
 
-        else:  # USB connection failed
-
+        else:  # USB or COM connection failed
+            log.write_log(
+            "No suitable devices were found for nfcpy", "error", logfile)
             pass
 
     # General failure
